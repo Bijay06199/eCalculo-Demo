@@ -1,0 +1,65 @@
+# Add project specific ProGuard rules here.
+# You can control the set of applied configuration files using the
+# proguardFiles setting in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
+
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
+
+
+-keep class yourpackage.** { *; }
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+#-ignorewarnings
+
+-keepclassmembers class * implements android.os.Parcelable {
+    static ** CREATOR;
+}
+
+##for Picasso library
+#-keep class com.squareup.picasso.** { *; }
+#-dontwarn com.squareup.picasso.**
+
+-keep class android.support.v7.widget.SearchView { *; }
+-keepattributes *Annotation*, InnerClasses, Signature
+-dontwarn android.support.v4.**a
+-keep class android.support.v4.** { *; }
+-dontwarn android.support.v7.**
+-keep class android.support.v7.** { *; }
+-dontwarn org.joda.**
+-keep class org.joda.** { *; }
+
+#for picasso
+-keep class com.squareup.picasso.** { *; }
+-dontwarn com.squareup.picasso.**
+-dontwarn javax.annotation.Nullable
+-dontwarn javax.annotation.ParametersAreNonnullByDefault
+
+-dontwarn okhttp3.internal.platform.*
+
+#for gson
+-keepattributes Signature
+-dontwarn sun.misc.**
+-keep class * extends com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+#all model classes
+-keep class com.raisetech.ecalculo.dtos.** { *; }
+
